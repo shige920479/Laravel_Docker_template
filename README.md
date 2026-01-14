@@ -91,6 +91,12 @@ Laravel が必要とする書き込み権限を Dockerfile で付与
 .envファイルを作成し環境変数を設定
 ```
 
+### **事前\. docker-compose-ymlの編集**
+
+```sh
+networks名やコンテナ名などをプロジェクトに合わせて命名
+```
+
 ### **1\. Docker イメージのビルド**
 
 ```sh

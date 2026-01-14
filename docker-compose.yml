@@ -5,11 +5,11 @@ services:
       args:
         UID: 1000
         GID: 1000
-    container_name: laravel_crm-php
+    container_name: laravel_crm-php # ☆修正箇所
     volumes:
       - ./src:/var/www/html
     networks:
-      - laravel_crm_net
+      - laravel_crm_net # ☆修正箇所
     # 起動時に権限を自動修正（storage/bootstrap を安全に準備）
     command: >
       bash -c "
@@ -22,7 +22,7 @@ services:
   nginx:
     build:
       context: ./docker/nginx
-    container_name: laravel_crm-nginx
+    container_name: laravel_crm-nginx # ☆修正箇所
     ports:
       - "8080:80"
       - "5173:5173"
@@ -32,10 +32,10 @@ services:
     depends_on:
       - php
     networks:
-      - laravel_crm_net
+      - laravel_crm_net # ☆修正箇所
   mysql:
     image: mysql:8.0
-    container_name: laravel_crm-mysql
+    container_name: laravel_crm-mysql # ☆修正箇所
     ports:
       - "3307:3306"
     environment:
@@ -47,11 +47,11 @@ services:
       - mysql_data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     networks:
-      - laravel_crm_net
+      - laravel_crm_net # ☆修正箇所
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: laravel_crm-phpmyadmin
+    container_name: laravel_crm-phpmyadmin # ☆修正箇所
     ports:
       - "8081:80"
     environment:
@@ -59,18 +59,18 @@ services:
     depends_on:
       - mysql
     networks:
-      - laravel_crm_net
+      - laravel_crm_net # ☆修正箇所
 
   redis:
     image: redis:latest
-    container_name: laravel_crm-redis
+    container_name: laravel_crm-redis # ☆修正箇所
     ports:
       - "6379:6379"
     networks:
-      - laravel_crm_net
+      - laravel_crm_net # ☆修正箇所
 
 volumes:
   mysql_data:
 
 networks:
-  laravel_crm_net:
+  laravel_crm_net: # ☆修正箇所

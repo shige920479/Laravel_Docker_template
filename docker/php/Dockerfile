@@ -29,6 +29,8 @@ RUN apt-get update -qq && \
         gd \
         intl
 
+RUN pecl install redis \
+    && docker-php-ext-enable redis
 # OPCache（Laravel で必須級の高速化）
 RUN docker-php-ext-install opcache
 
