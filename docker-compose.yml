@@ -11,14 +11,7 @@ services:
     networks:
       - laravel_crm_net # ☆修正箇所
     # 起動時に権限を自動修正（storage/bootstrap を安全に準備）
-    command: >
-      bash -c "
-        mkdir -p storage/logs &&
-        mkdir -p bootstrap/cache &&
-        chmod -R 775 storage bootstrap/cache &&
-        chown -R developer:developer storage bootstrap/cache &&
-        php-fpm
-      "
+    command: php-fpm
   nginx:
     build:
       context: ./docker/nginx

@@ -61,7 +61,7 @@ laravel_crm/
 
 ### **3\. storage / cache の権限自動調整**
 
-Laravel が必要とする書き込み権限を Dockerfile で付与
+Laravel が必要とする書き込み権限を Dockerfile で付与（entrypoint.shに権限付与CMDあり、自動実行）
 
 ### **4\. MySQL 設定をプロジェクト内で管理**
 
@@ -115,10 +115,10 @@ docker compose up -d
 composer create-project laravel/laravel src
 ```
 
-### **4\. 初回のみ：書き込み権限調整**
+### **4\. 不要だが念のため：書き込み権限調整（ホスト側で実行）**
 
 ```sh
-docker compose exec php bash -c "chmod -R 775 storage bootstrap/cache"
+chmod -R 775 storage bootstrap/cache
 ```
 
 * * *
