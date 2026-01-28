@@ -33,6 +33,11 @@ RUN pecl install redis \
     && docker-php-ext-enable redis
 # OPCache（Laravel で必須級の高速化）
 RUN docker-php-ext-install opcache
+# PCOV
+RUN pecl install pcov \
+    && docker-php-ext-enable pcov \
+    && echo "pcov.enabled=1" > /usr/local/etc/php/conf.d/pcov.ini \
+    && echo "pcov.directory=/var/www/html" >> /usr/local/etc/php/conf.d/pcov.ini
 
 # ------------------------------------------------------------
 # 2) Composer
